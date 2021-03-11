@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>使用JSX创建虚拟DOM</title>
+
+    <style>
+        .title_bg{
+            background-color: palegoldenrod;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="test"></div>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+
+    <script type="text/babel"> 
+        
+        const myData = 'Test Data'
+
+        // 1. jsx定义虚拟DOM不需要用引号
+        // 2. VDOM中使用js变量要加{}
+        // 3. 标签内不用class，要用className。因为ES6的class是关键字。
+        // 4. 内敛样式: style={{key:'value',key:'value'}}
+        // 5. 虚拟DOM必须只有一个根标签, 标签必须闭合
+        // 6. 标签首字母：
+        //      a. 若小写字母开头，则转化为html中同名元素。（若无同名元素则报错）
+        //      b. 若大写字母开头，React就去渲染对应组件。（若无则报错）
+        const VDOM = (
+            <h1 className='title_bg'  id="title">
+                <span style={{color:'white',fontSize:'20px'}}>
+                    Hello, React!
+                </span>
+                <span>{myData}</span>
+            </h1>
+            
+        )
+
+        ReactDOM.render(VDOM, document.getElementById('test'))
+    </script>
+</body>
+
+</html>

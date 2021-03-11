@@ -20,3 +20,17 @@
 * 数组常用方法
 * 模块化
 
+## [要点]
+#### hello_react.html:
+1. 引入react.development.js要在react-dom.development.js之前
+2. 一定要些text/babel,才能包含jsx
+
+#### jsx_rule.html:
+1. jsx定义虚拟DOM不需要用引号
+2. VDOM中使用js变量要加{}
+3. 标签内不用class，要用className。因为ES6的class是关键字。
+4. 内敛样式: style={{key:'value',key:'value'}}
+5. 虚拟DOM必须只有一个根标签, 标签必须闭合
+6. 标签首字母：
+      a. 若小写字母开头，则转化为html中同名元素。（若无同名元素则报错）
+      b. 若大写字母开头，React就去渲染对应组件。（若无则报错）
