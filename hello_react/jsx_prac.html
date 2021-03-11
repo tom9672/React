@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>使用JSX创建虚拟DOM</title>
+
+    <style>
+        .title_bg {
+            background-color: palegoldenrod;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="test"></div>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        const myData = ['Angular', 'React', 'Vue']
+
+
+        // 虚拟DOM中可以放表达式，但不能放语句（比如if，for，switch）
+        const VDOM = (
+            <ul>
+                {
+                    myData.map((item) => {
+                        return <li>{item}</li>
+                    }
+                    )
+                }
+            </ul>
+
+        )
+
+        ReactDOM.render(VDOM, document.getElementById('test'))
+    </script>
+</body>
+
+</html>
