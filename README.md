@@ -38,3 +38,13 @@
 
 #### jsx_prac.html  
 虚拟DOM中可以放表达式，但不能放语句（比如if，for，switch）
+
+
+## JS模块化
+提高复用率（只拆js）
+
+## 组件化
+全部打包带走（包含html，css，js，img，video，font...）
+
+# 模块化开发
+Chrome（扩展程序，下载react developer tools）

@@ -1,0 +1,23 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>React</title>
+</head>
+<body>
+    <div id="test"></div>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+
+
+    <script type="text/babel">
+        // 1. 创建函数式组件
+        function Demo(){
+            console.log(this); //次数的this是undefined，因为babel编译会开启严格模式
+            return <h2>测试函数组件（仅使用于小组件）</h2>
+        }
+        // 2. 渲染组件到页面
+        ReactDOM.render(<Demo/>, document.getElementById('test'))
+    </script>
+</body>
+</html>
