@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>React</title>
+</head>
+
+<body>
+    <div id="test"></div>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+        class Weather extends React.Component {
+
+            state = { isHot: true, wind: '大风' }
+
+            render() {
+                return this.state.isHot ? <h1 onClick={this.changeWeather}>今天天气很热，{this.state.wind}</h1> : <h1 onClick={this.changeWeather}>今天不热</h1>
+            }
+
+            // 自定 赋值语句的形式 + 尖头函数
+            changeWeather = () => {
+                this.setState({ isHot: !this.state.isHot })
+            }
+        }
+        ReactDOM.render(<Weather />, document.getElementById('test'))
+
+    </script>
+</body>
+
+</html>
