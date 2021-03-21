@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Class_Demo</title>
+    </head>
+    <body>
+        <script>
+
+            //关于类的注意点
+            // 1 构造器不一定要写，要进行初始化操作时才要写。
+            // 2 如果B继承A，且B写了构造器，要写super来实现父类的构造器
+            // 3 类中定义的方法，都是放在了类的原型对象上，供实例使用。
+            class Person{
+                constructor(name,age){
+                    this.name = name;
+                    this.age = age;
+                }
+                say(){
+                    console.log('My name is '+this.name +', my age is '+this.age+'.');
+                }
+            }
+            class Student extends Person{
+                constructor(name,age,grade){
+                    super(name,age);
+                    this.grade = grade;
+                }
+            }
+            
+        </script>
+        
+    </body>
+</html>
