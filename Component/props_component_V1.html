@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>React</title>
+</head>
+
+<body>
+    <div id="test1"></div>
+    <div id="test2"></div>
+    <div id="test3"></div>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+        //创建组件
+        class Person extends React.Component{
+            render(){
+                return(
+                    <ul>
+                    <li>{this.props.name}</li>  
+                    <li>{this.props.sex}</li>
+                    <li>{this.props.age}</li>      
+                    </ul>
+                )
+            }
+        }
+        //渲染组件到页面
+        ReactDOM.render(<Person name='Tom' sex='male' age='25'/>, document.getElementById('test1'))
+        ReactDOM.render(<Person name='Jerry' sex='Not sure' age='24'/>, document.getElementById('test2'))
+        ReactDOM.render(<Person name='Bo' sex='female' age='23'/>, document.getElementById('test3'))
+
+    </script>
+ 
+</body>
+
+</html>
