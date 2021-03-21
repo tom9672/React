@@ -6,11 +6,28 @@
 </head>
 
 <body>
+
+    <div id="test"></div>
+
     <script src="../js/react.development.js"></script>
     <script src="../js/react-dom.development.js"></script>
     <script src="../js/babel.min.js"></script>
 
- 
+    <script type="text/babel">
+        // 1. 类式组件： 
+        class MyComponent extends React.Component{
+            render(){
+                //render的this是该类的实例对象。（组件实例对象）
+                return(
+                    <div>
+                        <h1>测试类式组件（类式组件适用于复杂组件）</h1>    
+                    </div>
+                )
+            }
+        }
+        // 2. 渲染组件到页面 (类名就是组件名)，自动实例，并调用它render方法。
+        ReactDOM.render(<MyComponent/>, document.getElementById('test'))
+    </script>
 </body>
 
 </html>
