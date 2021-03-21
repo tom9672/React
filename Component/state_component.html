@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>React</title>
+</head>
+
+<body>
+    <div id="test"></div>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+        class Weather extends React.Component{
+            constructor(props){
+                super(props)
+                //初始化状态
+                this.state = {isHot:true}
+                //解决this指向问题
+                this.demo = this.changeWeather.bind(this)
+            }
+            changeWeather(){
+                //状态必须通过setState来修改
+                this.setState({isHot:!this.state.isHot})
+            }
+            render(){
+                return this.state.isHot ? <h1 onClick={this.demo}>今天天气很热</h1> : <h1 onClick={this.demo}>今天不热</h1>               
+            }
+        }
+        ReactDOM.render(<Weather/>, document.getElementById('test'))
+
+    </script>
+</body>
+
+</html>
