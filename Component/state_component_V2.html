@@ -14,13 +14,16 @@
     <script type="text/babel">
         class Weather extends React.Component {
 
+            //初始化state
             state = { isHot: true, wind: '大风' }
-
+            
             render() {
                 return this.state.isHot ? <h1 onClick={this.changeWeather}>今天天气很热，{this.state.wind}</h1> : <h1 onClick={this.changeWeather}>今天不热</h1>
             }
 
+            // 注意点：
             // 自定 赋值语句的形式 + 尖头函数
+            // state不可以直接修改，要用setState
             changeWeather = () => {
                 this.setState({ isHot: !this.state.isHot })
             }
