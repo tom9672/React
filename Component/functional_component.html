@@ -16,7 +16,7 @@
             console.log(this); //次数的this是undefined，因为babel编译会开启严格模式
             return <h2>测试函数组件（仅使用于小组件）</h2>
         }
-        // 2. 渲染组件到页面
+        // 2. 渲染组件到页面 (函数名就是组件名)
         ReactDOM.render(<Demo/>, document.getElementById('test'))
     </script>
 </body>
