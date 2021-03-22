@@ -1,0 +1,62 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>React</title>
+</head>
+
+<body>
+    <div id="test1"></div>
+    <div id="test2"></div>
+    <div id="test3"></div>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+
+    <!-- 引入prop-typs，对组件标签属性进行限制 -->
+    <script src="../js/prop-types.min.js"></script>
+
+    <script type="text/babel">
+        //创建组件
+        class Person extends React.Component{
+
+            //规定props条件
+            static propTypes = {
+                name:PropTypes.string.isRequired,
+                sex:PropTypes.string.isRequired,
+                age:PropTypes.number,
+            }   
+
+            //指定默认标签属性值
+            static defaultProps = {
+                sex:'None',
+                age:18
+            }
+
+            render(){
+                // this.props.name = 'jack' //此行代码会报错，因为props是只读的
+                return(
+                    <ul>
+                    <li>{this.props.name}</li>  
+                    <li>{this.props.sex}</li>
+                    <li>{this.props.age}</li>    
+                    </ul>
+                    
+                )
+            }
+        }
+        
+        //渲染组件到页面
+        ReactDOM.render(<Person name='Tom' sex='male' age='25'/>, document.getElementById('test1'))
+        ReactDOM.render(<Person name='Jerry'  age='24'/>, document.getElementById('test2'))
+        ReactDOM.render(<Person name='Bo' sex='female' age='23'/>, document.getElementById('test3'))
+        
+        //语法糖
+        const p = {name:'TEST_NAME', sex:'None'}
+        //展开运算符（三点运算符），仅当用作标签属性时可以这个使用。否则复制字面量要加{}，可用作展开或合并，比如{...p,xxx:'yyy'}，(reacDOM的{}只是分隔符)
+        ReactDOM.render(<Person {...p}/>, document.getElementById('test3'))
+    </script>
+ 
+</body>
+
+</html>
