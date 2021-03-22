@@ -17,20 +17,20 @@
         class Demo extends React.Component{
 
             showData1 = () =>{
-                alert(this.refs.input1.value)
+                alert(this.input1.value)
             }
 
             showData2 = () =>{
-                alert(this.refs.input2.value)
+                alert(this.input2.value)
             }
             
             render(){
                 return(
                     <div>
-                        <input ref='input1' type="text" placeholder='点击按钮显示提示'/> 
+                        <input ref={(currentNode)=>{this.input1 = currentNode} } type="text" placeholder='点击按钮显示提示'/> 
                         <button onClick={this.showData1}>click</button>   
                         <br/>
-                        <input onBlur={this.showData2} ref='input2' type="text" placeholder='失去焦点显示提示'/> 
+                        <input onBlur={this.showData2} ref={(currentNode)=>{this.input2 = currentNode} } type="text" placeholder='失去焦点显示提示'/> 
                     </div>
                 )
             }
