@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>React</title>
+</head>
+
+<body>
+    <div id="test"></div>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+
+    <!-- 
+    1. 通过OnXxx(注意大小写)
+        自定义事件，而不是原生DOM事件（为了兼容性好）
+        事件委托方式处理（为了高效）
+    2.通过event.target得到发生事件的DOM元素对象 (不要过度使用ref)
+    -->
+    <script type="text/babel">
+        // 非受控组件，现用现取
+        class Login extends React.Component{
+            handleSubmit = (event)=>{
+                event.preventDefault()
+                alert('Your user name is:'+this.username.value)
+            }
+
+            render(){
+                return(
+                    <form action="" onSubmit={this.handleSubmit}>
+                        UserName: <input ref={c => this.username = c} type="text" name='userName'/>
+                        Password: <input ref={c => this.password = c} type="password" name='password'/>
+                        <button>LOGIN</button>
+                    </form>
+                )
+            }
+        }
+        ReactDOM.render(<Login/>, document.getElementById('test'))
+    </script>
+ 
+</body>
+
+</html>
