@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>React</title>
+</head>
+
+<body>
+
+    <div id="test"></div>
+
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+        class Demo extends React.Component{
+
+            showData1 = () =>{
+                alert(input1.value)
+            }
+
+            showData2 = () =>{
+                alert(this.input2.value)
+            }
+
+            state = {isHot:true}
+
+            changeWeather = () => {
+                this.setState({isHot:!this.state.isHot})
+            }
+            
+            saveInput = (currentNode)=>{
+                this.input1 = currentNode
+                console.log('@',currentNode)
+            }
+
+            //内联函数会被触发两次（但无关紧要），用类绑定不会。
+            render(){
+                return(
+                    <div>
+                        <h2>今天{this.state.isHot ? '很热':'不热'}</h2>
+                        <input ref={this.saveInput} type="text" placeholder='点击按钮显示提示'/> 
+                        <button onClick={this.showData1}>click</button>   
+                        <br/>
+                        <input onBlur={this.showData2} ref={(currentNode)=>{this.input2 = currentNode;console.log('@',currentNode)} } type="text" placeholder='失去焦点显示提示'/> 
+                    
+                        <button onClick={this.changeWeather}>change weather</button>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<Demo />, document.getElementById('test'))
+    </script>
+ 
+</body>
+
+</html>
