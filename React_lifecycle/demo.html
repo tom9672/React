@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>React</title>
+</head>
+
+<body>
+
+    <div id="test"></div>
+
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+        class Life extends React.Component{
+
+            state ={opacity:1}
+
+            btn =()=>{
+                // unmount(卸载)
+                ReactDOM.unmountComponentAtNode(document.getElementById('test'))
+            }
+
+            componentDidMount(){
+                this.timer = setInterval(() => {
+                    if (this.state.opacity <= 0){
+                        this.setState({opacity:1})
+                    }else{
+                        this.setState({opacity:this.state.opacity-0.1})
+                    }
+                }, 200);
+            }
+
+            componentWillUnmount(){
+                // remove Interval
+                clearInterval(this.timer)
+            }
+
+            render(){
+                return(
+                    <div>
+                        <h2 style={{opacity:this.state.opacity}}>Test content</h2>
+                        <button onClick={this.btn}>Click</button>
+                    </div>
+                )
+            }
+        }
+        
+        // mount(挂载)
+        ReactDOM.render(<Life />,document.getElementById('test'))
+    </script>
+ 
+</body>
+
+</html>
