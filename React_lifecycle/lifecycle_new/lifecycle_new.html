@@ -35,7 +35,7 @@
                 this.forceUpdate()
             }   
 
-            componentWillMount(){
+            UNSAFE_componentWillMount(){
                 console.log('ComponentWillMount will be created 2nd')
             }
 
@@ -53,7 +53,7 @@
                 return false
             }
 
-            componentWillUpdate(){
+            UNSAFE_componentWillUpdate(){
                 console.log('componentWillUpdate')
             }
 
@@ -97,7 +97,7 @@
         // child
         class B extends React.Component{
 
-            componentWillReceiveProps(){
+            UNSAFE_componentWillReceiveProps(){
                 console.log('B, componentWillReceiveProps')
             }
 
@@ -108,10 +108,10 @@
                     </div>
                 )
             }
-        }
+        }   
 
         // mount(挂载)
-        ReactDOM.render(<A />,document.getElementById('test'))
+        ReactDOM.render(<Count/>,document.getElementById('test'))
     </script>   
  
 </body> 
