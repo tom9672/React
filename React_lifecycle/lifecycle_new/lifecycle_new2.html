@@ -1,0 +1,82 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>React</title>
+</head>
+
+<body>
+
+    <div id="test"></div>
+
+    <script src="../../js/react.development.js"></script>
+    <script src="../../js/react-dom.development.js"></script>
+    <script src="../../js/babel.min.js"></script>
+
+    <script type="text/babel">
+        class Count extends React.Component{
+
+            constructor(props){
+                console.log('constructor will be created 1st')
+                super(props)
+            }
+
+            state ={result:0}
+
+            btn =()=>{
+                this.setState({result:this.state.result+1})
+            }
+
+            death =()=>{
+                ReactDOM.unmountComponentAtNode(document.getElementById('test'))
+            }
+
+            force =()=>{
+                this.forceUpdate()
+            }   
+
+            // the value will be decided by props at any time.
+            static getDerivedStateFromProps(props){
+                console.log('getDerivedStateFromProps')
+                return props
+            }
+
+            componentDidMount(){
+                console.log('ComponentWillMount will be created 4th')
+            }
+
+            componentWillUnmount(){
+                console.log('Unmount')
+            }
+
+            shouldComponentUpdate(){
+                console.log('shouldComponentUpdate')
+                // if true, can update and will use render. otherwise, will not update
+                return false
+            }
+
+
+            componentDidUpdate(){
+                console.log('componentDidUpdate')
+            }
+
+            render(){
+                console.log('render will be created 3rd')
+                return(
+                    <div>
+                        <h2 style={{opacity:this.state.opacity}}>Current result is: {this.state.result} </h2>
+                        <button onClick={this.btn}>Click me add 1 </button>
+                        <button onClick={this.death}>Unmount Component</button>
+                        <button onClick={this.force}>Force update</button>
+                    </div>
+                )
+            }
+        }   
+
+        // mount(挂载)
+        ReactDOM.render(<Count result={99}/>,document.getElementById('test'))
+    </script>   
+ 
+</body> 
+
+</html>
