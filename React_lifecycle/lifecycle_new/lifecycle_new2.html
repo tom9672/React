@@ -38,7 +38,8 @@
             // the value will be decided by props at any time.
             static getDerivedStateFromProps(props){
                 console.log('getDerivedStateFromProps')
-                return props
+                //return props
+                return null
             }
 
             componentDidMount(){
@@ -52,12 +53,17 @@
             shouldComponentUpdate(){
                 console.log('shouldComponentUpdate')
                 // if true, can update and will use render. otherwise, will not update
-                return false
+                return true
+            }
+
+            getSnapshotBeforeUpdate(){
+                console.log('getSnapshotBeforeUpdate')
+                return 'snapShotValue'
             }
 
 
-            componentDidUpdate(){
-                console.log('componentDidUpdate')
+            componentDidUpdate(preProps,preState,snapShot){
+                console.log('componentDidUpdate',preProps,preState,snapShot)
             }
 
             render(){
