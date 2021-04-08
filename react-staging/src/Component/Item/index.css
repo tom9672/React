@@ -1,3 +1,16 @@
 li{
-    list-style: none;
+    list-style:decimal;
+}
+
+li:hover{
+    background-color: #ddd;
+}
+
+button{
+    display: none;
+}
+
+li:hover button{
+    float: right;
+    display: inline;
 }

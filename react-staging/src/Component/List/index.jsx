@@ -3,11 +3,12 @@ import Item from '../Item'
 import './index.css'
 class MyList extends React.Component{
    render(){
+       const {todos,remove} = this.props
        return(
            <ul>
                {
-                   this.props.todos.map((todo)=>{
-                    return <Item key={todo.id} {...todo}/>
+                   todos.map((todo)=>{
+                    return <Item key={todo.id} {...todo} remove={remove}/>
                 })
                }
            </ul>
