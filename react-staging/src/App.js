@@ -3,7 +3,15 @@ import Hello from './Components/Hello/Hello'
 import Welcome from './Components/Welcome/Welcome'
 import GetStudentInfo from './Components/GetStudentInfo/GetStudentInfo'
 import Search from './Components/Search/Search'
+import List from './Components/List/List'
 class App extends React.Component{
+
+    state={users:[], isFirst:true, isLoading:false, err:''}
+
+    updateAppState = (stateObj) =>{
+        this.setState(stateObj)
+    }
+    
     render(){
         return(
             <div>
@@ -11,7 +19,8 @@ class App extends React.Component{
                 <Hello/>
                 <Welcome/>
                 <GetStudentInfo/>
-                <Search/>
+                <Search updateAppState={this.updateAppState}/>
+                <List {...this.state}/>
             </div>
         )
     }

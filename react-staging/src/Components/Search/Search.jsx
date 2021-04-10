@@ -1,9 +1,20 @@
+import axios from 'axios'
 import React from 'react'
 
 export default class Search extends React.Component{
     search = () =>{
         const {keywordEle:{value:keyword}} = this
-        console.log(keyword)
+        const url = 'https://api.github.com/search/users?q=' + keyword
+        this.props.updateAppState({isFirst:false, isLoading:true})
+        axios.get(url).then(
+            response => {
+                const data = response.data.items
+                this.props.updateAppState({users:data, isLoading:false})
+            },
+            error => {
+                this.props.updateAppState({isLoading:false, err:error.message})
+            }
+        )
     }
     render(){
         return(
